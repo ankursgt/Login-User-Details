@@ -1,0 +1,35 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+        <a class ="nav-link" [routerLink]="['/login']">Login-User-Details</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+  <div class="col-md-5 col-md-offset-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Login</div>
+      <div class="panel-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+          <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" formControlName="username">
+              <span class="error-message" *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.dirty">Username is required</span>
+          </div>
+          <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" formControlName="password"/>
+              <span class="error-message" *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty">Password is required</span>
+          </div>
+          <button [disabled]="loading" class="btn btn-primary">
+              <span *ngIf="loading"></span>
+              Login
+          </button>
+          <div *ngIf="error" class="error-message">{{error}}</div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
